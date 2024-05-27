@@ -1,15 +1,11 @@
 package org.chris.sm.utils;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
-import org.apache.commons.lang.StringUtils;
+import java.util.*;
 
 public class ParserUtils {
 	private static volatile Map<String, Date> dateCache1 = new HashMap<String, Date>();
@@ -28,12 +24,11 @@ public class ParserUtils {
 	}
 	/**
 	 * converts a value in string format to the proper object value
-	 * @param parserfield the <code>ParserField</code> that contains the 
+	 * @param pfield the <code>ParserField</code> that contains the
 	 * field name, size and decimals
-	 * @param type object class type. Using BeanUtils the string value is converted to an object of the specified type
 	 * @param value string value to be converted to an object value
 	 * @return the converted string value
-	 * @throws GatewayException
+	 * @throws ParseException
 	 */
 	public static synchronized Object fromStringToObject(ParserField pfield, String value) throws ParseException 
 	{
@@ -104,7 +99,8 @@ public class ParserUtils {
 		if (Float.class.isAssignableFrom(pfield.getClassType()) || pfield.getClassType().getName().equals("double")) {
 			if (!StringUtils.isNotBlank(value))
 				return null;
-			return new Float(value);
+			Float v = new Float(value);
+			return v;
 		}
 
 		return null;

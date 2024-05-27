@@ -312,7 +312,8 @@ public class FormatterUtils {
 			}
 
 			// parse the amount string and get a double.
-			return  (new Double(tempAmountString)).doubleValue();			
+			double v = (new Double(tempAmountString)).doubleValue();
+			return v;			
 		}
 		catch(Exception e) {
 			if(log.isErrorEnabled()) {
