@@ -313,7 +313,7 @@ public class FormatterUtils {
 
 			// parse the amount string and get a double.
 			double v = (new Double(tempAmountString)).doubleValue();
-			return v;			
+			return v;
 		}
 		catch(Exception e) {
 			if(log.isErrorEnabled()) {
